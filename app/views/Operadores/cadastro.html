@@ -1,0 +1,20 @@
+#{extends 'formulario.html' /}
+#{set title:'Vedor' /}
+
+<meta charset="UTF-8">
+
+<form class="form-signin" action="@{Operadores.salvar}" method="POST">
+	<h2 class="form-signin-heading"><img src="@{'/public/images/logotipo.png'}"></h2>
+	<div class="login-wrap">	
+		<div class="user-login-info">	
+			<input type="text" class="form-control" name="operador.nome" placeholder="Nome">
+			<input type="text" class="form-control" name="operador.email" placeholder="Email" required>
+			<input type="password" class="form-control" name="operador.senha" placeholder="Senha" required>
+		</div>
+		<button class="btn btn-lg btn-login btn-block" type="submit">cadastrar</button>
+
+		<div class="registration">
+			<a class="" href="@{Logins.login}">Login</a>
+		</div>
+	</div>
+</form>

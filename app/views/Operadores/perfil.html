@@ -1,0 +1,23 @@
+#{extends 'layout.html' /} #{set title="session.get('nome')" /}
+
+<meta charset="UTF-8">
+
+<div class="row">
+	<div class="col-md-12">
+		<section class="panel">
+			<div class="panel-body profile-information">
+				<div class="col-md-3">
+					<div class="profile-pic text-center">
+						<img src="@{'/public/images/lock_thumb.jpg'}" alt="" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="profile-desk" style="border-right:0px;">
+						<h1>${operador.nome}</h1>
+						<span class="text-muted">${operador.email}</span>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

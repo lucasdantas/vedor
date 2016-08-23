@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+			
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	    <title>#{get 'title' /}</title>
+	
+	    <!--Core CSS -->
+	    <link href="@{'/public/bootstrap/css/bootstrap.min.css'}" rel="stylesheet">
+	    <link href="@{'/public/stylesheets/bootstrap-reset.css'}" rel="stylesheet">
+	    <link href="@{'/public/assets/font-awesome/css/font-awesome.css'}" rel="stylesheet" />
+	
+	    <!-- Custom styles for this template -->
+	    <link href="@{'/public/stylesheets/style.css'}" rel="stylesheet">
+	    <link href="@{'/public/stylesheets/style-responsive.css'}" rel="stylesheet" />
+	    
+	    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCkX3DQC911MwuZweTQ3d0viSiVdB6baqI"></script>
+	    <script>
+			var myCenter=new google.maps.LatLng(${dispositivo?.latitude},${dispositivo?.longitude});
+	
+			function initialize()
+			{
+			var mapProp = {
+			  center:myCenter,
+			  zoom:15,
+			  mapTypeId:google.maps.MapTypeId.ROADMAP
+			  };
+	
+			var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	
+			var marker=new google.maps.Marker({
+			  position:myCenter,
+			  });
+	
+			marker.setMap(map);
+			
+			}
+	
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	    
+	    #{get 'moreStyles' /}
+	</head>
+	<body>
+		<section id="container" >
+		
+			<!-- Mensagem de sucesso -->
+			<div class="sucess-container">
+				#{if flash.sucess}
+						<p>${flash.sucess.raw()}</p>
+				#{/if}
+			</div>
+			
+			<!-- Mensagem de erro -->
+			<div class="warning-container">
+				#{if flash.error}
+						<p>${flash.error.raw()}</p>
+				#{/if}
+			</div>
+		
+			<!-- Menu cima -->
+			<header class="header fixed-top clearfix">
+			
+				<!-- Logotipo -->
+				<div class="brand">
+				
+				    <a href="@{Operadores.menu}" class="logo">
+				        <img src="@{'/public/images/logotipo menor.png'}">
+				    </a>
+				    <div class="sidebar-toggle-box">
+				        <div class="fa fa-bars"></div>
+				    </div>
+				</div>
+				<!-- Fim logotipo -->
+				
+				<!-- Menu Profile -->
+				<div class="top-nav clearfix">
+				    <!--search & user info start-->
+				    <ul class="nav pull-right top-menu">
+				        <li>
+				            <input type="text" class="form-control search" placeholder="Procurar">
+				        </li>
+				        <!-- user login dropdown start-->
+				        <li class="dropdown">
+				            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+				                <img alt="" src="@{'/public/images/avatar1_small.jpg'}">
+				                <span class="username">${session.get('nome')}</span>
+				                <b class="caret"></b>
+				            </a>
+				     
+				            <ul class="dropdown-menu extended logout">
+				                <li><a href="@{Operadores.perfil(session.get('id'))}">Ver perfil</a></li>
+				                <li><a href="@{Operadores.configuracoes(session.get('id'))}">Configurações</a></li>
+				                <li><a href="@{Logins.logout}">Sair</a></li>
+				            </ul>
+				        </li>
+				    </ul>
+				</div>
+				<!-- Fim menu Profile -->
+				
+			</header>
+			<!-- Fim menu cima -->
+			
+			<!-- Menu esquerdo -->
+			<aside>
+			    <div id="sidebar" class="nav-collapse">
+			        <!-- sidebar menu start-->
+			        <ul class="sidebar-menu" id="nav-accordion">
+			            <li>
+			                <a href="@{Operadores.menu}">
+			                    <span>Início</span>
+			                </a>
+			            </li>
+			            <li class="sub-menu">
+			                <a href="javascript:;">
+			                    <span>Dispositivos</span>
+			                </a>
+			                <ul class="sub">
+			                    <li><a href="@{Dispositivos.cadastro}">Adicionar novo dispositivo</a></li>
+			                    <li><a href="@{Dispositivos.listar}">Ver todos</a></li>
+			                </ul>
+			            </li>
+			            <li>
+			                <a href="@{Operadores.listar}">
+			                    <span>Operadores</span>
+			                </a>
+			            </li>
+			        </ul>
+			        <!-- sidebar menu end-->
+			    </div>
+			</aside>
+			<!-- Fim menu esquerdo -->
+			
+			<!--Conteiner do conteúdo-->
+			<section id="main-content">
+				<section class="wrapper">
+					<!--<div class="row">-->
+						<!-- Conteúdo-->
+						
+						#{doLayout /}
+						<!-- Fim do conteúdo-->
+					<!--</div>-->
+				</section>
+			</section>
+			<!--Fim do container do conteúdo-->		
+		</section>
+				
+		<!--Core js-->
+		<script src="@{'/public/javascripts/lib/jquery.js'}"></script>
+		<script src="@{'/public/bootstrap/js/bootstrap.min.js'}"></script>
+		<script class="include" type="text/javascript" src="@{'/public/javascripts/accordion-menu/jquery.dcjqaccordion.2.7.js'}"></script>
+		<script src="@{'/public/javascripts/scrollTo/jquery.scrollTo.min.js'}"></script>
+		<script src="@{'/public/javascripts/nicescroll/jquery.nicescroll.js'}" type="text/javascript"></script>
+		<!--Easy Pie Chart-->
+		<script src="@{'/public/assets/easypiechart/jquery.easypiechart.js'}"></script>
+		<!--Sparkline Chart-->
+		<script src="@{'/public/assets/sparkline/jquery.sparkline.js'}"></script>
+		<!--jQuery Flot Chart-->
+		<script src="@{'/public/assets/flot-chart/jquery.flot.js'}"></script>
+		<script src="@{'/public/assets/flot-chart/jquery.flot.tooltip.min.js'}"></script>
+		<script src="@{'/public/assets/flot-chart/jquery.flot.resize.js'}"></script>
+		<script src="@{'/public/assets/flot-chart/jquery.flot.pie.resize.js'}"></script>
+		<!--common script init for all pages-->
+		<script src="@{'/public/javascripts/scripts.js'}"></script>
+		
+		#{get 'moreScripts' /}
+	</body>
+</html>

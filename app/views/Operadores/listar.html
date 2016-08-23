@@ -1,0 +1,33 @@
+#{extends 'layout.html' /}
+#{set title="Operadores" /}
+
+<meta charset="UTF-8">
+
+<div class="col-sm-12">
+	<section class="panel">
+		<header class="panel-heading wht-bg">
+			<h4 class="gen-case">Operadores
+				<form action="@{Operadores.listar}" method="POST" class="pull-right src-position">
+					<div class="input-append">
+						<input type="text" class="form-control" name="pesquisa" value = "${pesquisa}" placeholder="Procurar">
+					</div>
+				</form>
+			</h4>
+		</header>
+		<div class="panel-body minimal">
+			<table class="table table-striped table-hover table-bordered" id="editable-sample">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					#{list items:operadores, as:'op'}
+						#{operador op:op /}
+					#{/list}
+				</tbody>
+			</table>
+		</div>
+	</section>
+</div>

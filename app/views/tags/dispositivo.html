@@ -1,0 +1,9 @@
+<tr class="">
+	<td>${_d.nome}</td>
+	<td>${_d.mac}</td>
+	<td style="min-width: 20%; max-width: 60px; text-align: center">
+		<a class="btn btn-xs btn-primary" href ="@{Dispositivos.exibir(_d)}" style="margin-right:5px">Detalhar</a>
+		<a class="btn btn-xs btn-warning" href="@{Dispositivos.editar(_d.id)}" style="margin-right:5px">Editar</a>
+		<a class="btn btn-xs btn-danger" href="@{Dispositivos.deletar(_d.id)}">Remover</a>
+	</td>
+</tr>

@@ -1,0 +1,36 @@
+#{extends 'layout.html' /}
+
+<meta charset="UTF-8">
+
+<div class="col-lg-12">
+	<section class="panel">
+		<header class="panel-heading">Detalhes</header>
+		<div class="panel-body">
+			<div class="col-md-9 payment-method">
+				<div>
+					<p>Nome: </p>
+					<h4>${dispositivo.nome}</h4>
+				</div>
+				<div>
+					<p>MAC: </p>
+					<h4>${dispositivo.mac}</h4>
+				</div>
+				<div>
+					<p>Descrição: </p>
+					<h4 style="text-align:justify">${dispositivo.descricao}</h4>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<div class="col-sm-12">
+	<section class="panel">
+		<header class="panel-heading">
+			Localização
+		</header>
+		<div class="panel-body">
+			<div id="googleMap" style="width:90%; height:90%; margin: 5% 5% 5% 5%"></div>
+		</div>
+	</section>
+</div>
