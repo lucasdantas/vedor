@@ -3,19 +3,16 @@ package controllers;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import models.Dispositivo;
-import play.db.jpa.JPABase;
 import play.mvc.Controller;
 
 public class Dispositivos extends Controller{
 	
 	public static void cadastro(Long id){
-		if(id ==null){
+		if (id ==null) {
 			render();
 		}
-		else{
+		else {
 			Dispositivo dispositivo = Dispositivo.findById(id);
 			render(dispositivo);
 		}
